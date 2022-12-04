@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../api/mock_fooderlich_service.dart';
 import '../components/components.dart';
+import '../components/friend_post_list_view.dart';
 import '../models/explore_data.dart';
 
 class ExploreScreen extends StatelessWidget {
@@ -17,15 +18,14 @@ class ExploreScreen extends StatelessWidget {
         if( snapshot.connectionState == ConnectionState.done ) {
           return ListView(
             scrollDirection: Axis.vertical,
+            // physics: const BouncingScrollPhysics(),
             children: [
               TodayRecipeListView(
                 recipes: snapshot.data?.todayRecipes ?? []
               ),
               const SizedBox(height: 16,),
-              // TODO: Replace this with FirendPostListView
-              Container(
-                height: 400,
-                color: Colors.green,
+              FriendPostListView(
+                friendPosts: snapshot.data?.friendPosts ?? []
               )
             ],
           );
