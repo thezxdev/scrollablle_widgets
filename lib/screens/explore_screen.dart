@@ -5,7 +5,6 @@ import '../components/components.dart';
 import '../models/explore_data.dart';
 
 class ExploreScreen extends StatelessWidget {
-
   final mockService = MockFooderlichService();
 
   ExploreScreen({super.key});
@@ -16,9 +15,19 @@ class ExploreScreen extends StatelessWidget {
       future: mockService.getExploreData(),
       builder: (context, AsyncSnapshot<ExploreData> snapshot) {
         if( snapshot.connectionState == ConnectionState.done ) {
-          final recipes = snapshot.data?.todayRecipes ?? [];
-          return TodayRecipeListView(
-            recipes: recipes
+          return ListView(
+            scrollDirection: Axis.vertical,
+            children: [
+              TodayRecipeListView(
+                recipes: snapshot.data?.todayRecipes ?? []
+              ),
+              const SizedBox(height: 16,),
+              // TODO: Replace this with FirendPostListView
+              Container(
+                height: 400,
+                color: Colors.green,
+              )
+            ],
           );
         } else {
           return const Center(
@@ -29,3 +38,20 @@ class ExploreScreen extends StatelessWidget {
     );
   }
 }
+
+
+    // return FutureBuilder(
+    //   future: mockService.getExploreData(),
+    //   builder: (context, AsyncSnapshot<ExploreData> snapshot) {
+    //     if( snapshot.connectionState == ConnectionState.done ) {
+    //       final recipes = snapshot.data?.todayRecipes ?? [];
+    //       return TodayRecipeListView(
+    //         recipes: recipes
+    //       );
+    //     } else {
+    //       return const Center(
+    //         child: CircularProgressIndicator(),
+    //       );
+    //     }
+    //   }
+    // );
