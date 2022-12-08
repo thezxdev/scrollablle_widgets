@@ -14,11 +14,13 @@ class GroceryItem {
   final Color color;
   final DateTime date;
   final bool isComplete;
+  final int quantity;
 
   GroceryItem({
     required this.id,
     required this.name,
     required this.importance,
+    required this.quantity,
     required this.color,
     required this.date,
     this.isComplete = false,
@@ -38,6 +40,7 @@ class GroceryItem {
       name: name ?? this.name,
       importance: importance ?? this.importance,
       color: color ?? this.color,
+      quantity: quantity ?? this.quantity,
       date: date ?? this.date,
       isComplete: isComplete ?? this.isComplete
     );
