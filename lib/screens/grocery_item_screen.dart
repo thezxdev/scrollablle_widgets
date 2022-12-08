@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../models/models.dart';
 
@@ -69,13 +70,39 @@ class _GroceryItemScreenState extends State<GroceryItemScreen> {
     super.dispose();
   }
 
-  // TODO: Add dispose()
-
   @override
   Widget build(BuildContext context) {
-    // TODO: Add GroceryItemScreen Scaffold
-    return Container(
-      color: Colors.orange,
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.check),
+            onPressed: () {
+              // TODO: Add callback handler
+            }
+          )
+        ],
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          'Grocery Item',
+          style: GoogleFonts.lato(fontWeight: FontWeight.w600),
+        ),
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(16),
+        child: ListView(
+          children: [
+            // TODO: Add name TextField
+            // TODO: Add Importance selection
+            // TODO: Add date picker
+            // TODO: Add time picker
+            // TODO: Add color picker
+            // TODO: Add slider
+            // TODO: Add Grocery Tile
+          ],
+        ),
+      ),
     );
 
     // TODO: Add buildNameField()
