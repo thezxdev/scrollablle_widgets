@@ -34,7 +34,7 @@ class _GroceryItemScreenState extends State<GroceryItemScreen> {
   // Hora actual
   TimeOfDay _timeOfDay = TimeOfDay.now();
   // La etiqueta del color
-  Color _currentCOlor = Colors.green;
+  Color _currentColor = Colors.green;
   // Cantidad de un objeto
   int _currentSliderValue = 0;
   
@@ -49,7 +49,7 @@ class _GroceryItemScreenState extends State<GroceryItemScreen> {
       _name = originalItem.name;
       _currentSliderValue = originalItem.quantity;
       _importance = originalItem.importance;
-      _currentCOlor = originalItem.color;
+      _currentColor = originalItem.color;
       final date = originalItem.date;
       _timeOfDay = TimeOfDay(hour: date.hour, minute: date.minute);
       _dueDate = date;
@@ -93,7 +93,7 @@ class _GroceryItemScreenState extends State<GroceryItemScreen> {
         padding: const EdgeInsets.all(16),
         child: ListView(
           children: [
-            // TODO: Add name TextField
+            buildNameField()
             // TODO: Add Importance selection
             // TODO: Add date picker
             // TODO: Add time picker
@@ -104,19 +104,47 @@ class _GroceryItemScreenState extends State<GroceryItemScreen> {
         ),
       ),
     );
-
-    // TODO: Add buildNameField()
-
-    // TODO: Add buildImportanceField()
-
-    // TODO: Add buildDateField()
-
-    // TODO: Add buildTimeField()
-
-    // TODO: Add buildColorPicker()
-
-    // TODO: add buildQuantityField()
   }
+  
+  Widget buildNameField() {
+  
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Item Name',
+          style: GoogleFonts.lato(fontSize: 28),
+        ),
+        TextField(
+          controller: _nameController,
+          cursorColor: _currentColor,
+          decoration: InputDecoration(
+            hintText: 'E.g. Apples, Banan, 1 Bag of salt',
+            enabledBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.white),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: _currentColor),
+            ),
+            border: UnderlineInputBorder(
+              borderSide: BorderSide(color: _currentColor),
+            ),
+          ),
+        )
+      ],
+    );
+
+  }
+  
+  // TODO: Add buildImportanceField()
+  
+  // TODO: Add buildDateField()
+  
+  // TODO: Add buildTimeField()
+  
+  // TODO: Add buildColorPicker()
+  
+  // TODO: add buildQuantityField()
 }
 
 
